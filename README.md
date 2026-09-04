@@ -9,4 +9,4 @@ You may NOT:
 - Sell, sublicense, or commercialize this software
 - Remove or alter this copyright notice
 
-To request permission for any use not listed above, contact: [your email/discord]
+To request permission for any use not listed above, contact: @kitty on fenrid.com and @jailkittycat on discord
