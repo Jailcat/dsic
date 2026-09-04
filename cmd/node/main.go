@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/Jailcat/dsic/pkg/registry"
 )
@@ -24,7 +25,15 @@ func main() {
 		domain = d
 	}
 
+	var peers []string
+	if p := os.Getenv("DSIC_PEERS"); p != "" {
+		peers = strings.Split(p, ",")
+	}
+
 	reg.Register(domain, "127.0.0.1", port)
+
+	gossip := registry.NewGossip(reg, peers, port)
+	gossip.Start()
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "this node is alive on DSIC as %s", domain)
